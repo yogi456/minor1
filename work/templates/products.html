@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <title>Lookbook</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+
+    <link rel="stylesheet" href="../static/css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/animate.css">
+
+    <link rel="stylesheet" href="../static/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../static/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="../static/css/magnific-popup.css">
+
+    <link rel="stylesheet" href="../static/css/aos.css">
+
+    <link rel="stylesheet" href="../static/css/ionicons.min.css">
+
+    <link rel="stylesheet" href="../static/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="../static/css/jquery.timepicker.css">
+
+
+    <link rel="stylesheet" href="../static/css/flaticon.css">
+    <link rel="stylesheet" href="../static/css/icomoon.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+      <div class="container">
+        <a class="navbar-brand" href="{%url 'index'%}"><span class="flaticon-lotus"></span>LookBook</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="oi oi-menu"></span> Menu
+        </button>
+        <div class="collapse navbar-collapse" id="ftco-nav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active"><a href="{%url "index"%}" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="{%url "addbook"%}" class="nav-link">Add Book</a></li>
+            <li class="nav-item"><a href="{%url "userprofile"%}" class="nav-link">Back to profile</a></li>
+            <li class="nav-item"><a href="{%url "logout"%}" class="nav-link">Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <section class="ftco-section bg-light">
+      <div class="container">
+        <div class="row justify-content-center mb-5 pb-3">
+          <div class="col-md-7 heading-section ftco-animate text-center">
+            <h3 class="mb-1">Books Available</h3>
+            <h2 class="mb-2">Recently Added</h2>
+            <h3 class="mb-3">Search a book</h3>
+            <center>
+              <form class="form-inline" method ="POST" >
+                {%csrf_token%}
+                {{form.query}}
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+              </form>
+            </center>
+          </div>
+        </div>
+        <div class="row d-flex">
+        {% if error_message %}
+         <h1 class="alert alert-primary">{{ error_message }}</p>
+           <a href="{%url 'requestBook'%}">Request Book</a>
+          {%else%}
+          {%for i in model%}
+          <center>
+          <div class="col-md-12 ftco-animate">
+          	          <div class="block-7">
+          	            <div class="text-center">
+          	            <h2 class="heading"></h2>
+          	            <span class="price"><sup></sup> <span class="number"></span></span>
+          	            <span class="excerpt d-block">{{i.username}}</span>
+
+          	            <h3 class="heading-2 my-4">Book Name: {{i.bookname}}</h3>
+
+          	            <ul class="pricing-text mb-5">
+          	              <li>Added at:{{i.timeadded}}</li>
+          	              <li>WrittenBy:{{i.bookauthor}}</li>
+                          <li>Bookid:{{i.bookid}}</li>
+          	              <li> <p>{{i.bookdescription}}</p> </li>
+                          <li> <p>
+                            Available:{{i.active_status}}
+                          </p> </li>
+          	            </ul>
+                        <a href="{%url 'detailsofbook' i.bookid%}" class="btn btn-primary d-block px-2 py-4">Request For this book</a>
+          </div>
+          </center>
+          {%endfor%}
+     {% endif %}
+
+
+<!--{%for i in model%}
+<center>
+<div class="col-md-12 ftco-animate">
+	          <div class="block-7">
+	            <div class="text-center">
+	            <h2 class="heading"></h2>
+	            <span class="price"><sup></sup> <span class="number"></span></span>
+	            <span class="excerpt d-block">{{i.username}}</span>
+
+	            <h3 class="heading-2 my-4">{{i.bookname}}</h3>
+
+	            <ul class="pricing-text mb-5">
+	              <li>Added at:{{i.timeadded}}</li>
+	              <li>WrittenBy:{{i.bookauthor}}</li>
+                <li>Bookid:{{i.bookid}}</li>
+	              <li> <p>{{i.bookdescription}}</p> </li>
+	            </ul>
+              <a href="{%url 'detailsofbook' i.bookid%}" class="btn btn-primary d-block px-2 py-4">Request For this book</a>
+</div>
+</div>
+</div>
+</center>
+{%endfor%}
+-->
+<!-- <div class="col-md-6 d-flex ftco-animate">
+  <div class="blog-entry justify-content-end">
+    <a href="#" class="block-20" style="background-image: url('images/book0.jpg');">
+    </a>
+    <div class="text p-2 float-right d-block">
+      <div class="d-flex align-items-center pt-2 mb-6">
+        <div class="one">
+          <!--<span class="day">{{i.timeadded}}</span>-->
+      <!--  </div>
+        <div class="two">
+          <span class="yr">Author Name: {{i.bookauthor}}</span>
+          <span class="mos"> User Uploaded: {{i.username}}</span>
+        </div>
+      </div>
+      <h3 class="heading mt-2"><a href="#">Book Name: {{i.bookname}}</a></h3>
+      <p> </p>
+    </div>
+  </div>
+</div>
+-->
+
+
+<!--
+<div class="col-md-4 d-flex ftco-animate">
+  <div class="blog-entry justify-content-end">
+    <a href="blog-single.html" class="block-20" style="background-image: url('images/image_2.jpg');">
+    </a>
+    <div class="text p-4 float-right d-block">
+      <div class="d-flex align-items-center pt-2 mb-4">
+        <div class="one">
+          <span class="day">27</span>
+        </div>
+        <div class="two">
+          <span class="yr">2018</span>
+          <span class="mos">December</span>
+        </div>
+      </div>
+      <h3 class="heading mt-2"><a href="#">Young Women Doing Yoga</a></h3>
+      <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+    </div>
+  </div>
+</div>
+<div class="col-md-4 d-flex ftco-animate">
+  <div class="blog-entry">
+    <a href="blog-single.html" class="block-20" style="background-image: url('images/image_3.jpg');">
+    </a>
+    <div class="text p-4 float-right d-block">
+      <div class="d-flex align-items-center pt-2 mb-4">
+        <div class="one">
+          <span class="day">25</span>
+        </div>
+        <div class="two">
+          <span class="yr">2018</span>
+          <span class="mos">December</span>
+        </div>
+      </div>
+      <h3 class="heading mt-2"><a href="#">Young Women Doing Yoga</a></h3>
+      <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+    </div>
+  </div>
+</div>
+-->
+        </div>
+      </div>
+    </section>
+    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+    <script src="../static/js/jquery.min.js"></script>
+    <script src="../static/js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="../static/js/popper.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <script src="../static/js/jquery.easing.1.3.js"></script>
+    <script src="../static/js/jquery.waypoints.min.js"></script>
+    <script src="../static/js/jquery.stellar.min.js"></script>
+    <script src="../static/js/owl.carousel.min.js"></script>
+    <script src="../static/js/jquery.magnific-popup.min.js"></script>
+    <script src="../static/js/aos.js"></script>
+    <script src="../static/js/jquery.animateNumber.min.js"></script>
+    <script src="../static/js/bootstrap-datepicker.js"></script>
+    <script src="../static/js/jquery.timepicker.min.js"></script>
+    <script src="../static/js/scrollax.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+    <script src="../static/js/google-map.js"></script>
+    <script src="../static/js/main.js"></script>
+
+  </body>
+</html>
