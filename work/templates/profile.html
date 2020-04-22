@@ -7,50 +7,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
 
-  <link rel="stylesheet" href="{% static '' %}css/open-iconic-bootstrap.min.css">
-  <link rel="stylesheet" href="{% static '' %}css/animate.css">
+  <link rel="stylesheet" href="{% static 'css/open-iconic-bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/animate.css' %}">
 
-  <link rel="stylesheet" href="{% static '' %}css/owl.carousel.min.css">
-  <link rel="stylesheet" href="{% static '' %}css/owl.theme.default.min.css">
-  <link rel="stylesheet" href="{% static '' %}css/magnific-popup.css">
+  <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
 
-  <link rel="stylesheet" href="{% static '' %}css/aos.css">
+  <link rel="stylesheet" href="{% static 'css/aos.css' %}">
 
-  <link rel="stylesheet" href="{% static '' %}css/ionicons.min.css">
+  <link rel="stylesheet" href="{% static 'css/ionicons.min.css' %}">
 
-  <link rel="stylesheet" href="{% static '' %}css/bootstrap-datepicker.css">
-  <link rel="stylesheet" href="{% static '' %}css/jquery.timepicker.css">
-
-
-  <link rel="stylesheet" href="{% static '' %}css/flaticon.css">
-  <link rel="stylesheet" href="{% static '' %}css/icomoon.css">
-  <link rel="stylesheet" href="{% static '' %}css/style.css">
-<!--
-<link rel="stylesheet" href="static/css/master.css">
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-<link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
-
-<link rel="stylesheet" href="static/css/open-iconic-bootstrap.min.css">
-<link rel="stylesheet" href="static/css/animate.css">
-
-<link rel="stylesheet" href="static/css/owl.carousel.min.css">
-<link rel="stylesheet" href="static/css/owl.theme.default.min.css">
-
-<link rel="stylesheet" href="static/css/magnific-popup.css">
-<link rel="stylesheet" href="static/css/aos.css">
-
-<link rel="stylesheet" href="static/css/ionicons.min.css">
-
-<link rel="stylesheet" href="static/css/bootstrap-datepicker.css">
-<link rel="stylesheet" href="static/css/jquery.timepicker.css">
-
-
-<link rel="stylesheet" href="static/css/flaticon.css">
-<link rel="stylesheet" href="static/css/icomoon.css">
-<link rel="stylesheet" href="static/css/style.css">
--->
+  <link rel="stylesheet" href="{% static 'css/bootstrap-datepicker.css' %}">
+  <link rel="stylesheet" href="{% static 'css/jquery.timepicker.css' %}">
+  <link rel="stylesheet" href="{% static 'css/flaticon.css' %}">
+  <link rel="stylesheet" href="{% static 'css/icomoon.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
  </head>
     <body class="profile-page">
       <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
@@ -70,7 +42,7 @@
   		  </div>
   	  </nav>
 
-      <div class="page-header header-filter" data-parallax="true" style="background-image:url('../static/images/Book.jpg');"></div>
+      <div class="page-header header-filter" data-parallax="true" style="background-image:url({%static 'images/Book.jpg' %});"></div>
               <div class="main main-raised">
           		<div class="profile-content">
                       <div class="container">
@@ -91,7 +63,7 @@
               	            </div>
                           </div>
                           <div class="description text-center">
-                              <p>An artist of considerable range, Chet Faker — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music, giving it a warm, intimate feel with a solid groove structure. </p>
+                              <p>Hi, I am {{model.username}}. I'm happy here..!!!!!!!!!! </p>
                           </div>
                           <h1>My Books</h1>
                           {%for i in model2%}
@@ -118,14 +90,6 @@
 
 
 
-<!--
-
-      <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-      <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>
-        <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
-        <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
--->
 
 
         <script src="{% static 'js/jquery.min.js' %}"></script>
