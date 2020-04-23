@@ -78,6 +78,9 @@
                     <div class="card-heading"></div>
                     <div class="card-body">
                         <h2 class="title">Login</h2>
+			    {% if error_message %}
+                         <p class="alert alert-primary">{{ error_message }}</p>
+                     {% endif %}
                         <form method="POST">
                           {%csrf_token%}
                             <div class="input-group">
