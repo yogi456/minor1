@@ -78,23 +78,27 @@ def login_me(request):
     if request.method == "POST":
         if form.is_valid():
             username = request.POST['username']
-            user = User.objects.get(username=username)
-            password = request.POST['password']
-            user.backend = 'django.contrib.auth.backends.ModelBackend'
-            user = authenticate(username=username, password=password)
-            if user.is_active:
-                messages.success(request, "successful login!")
-                print("aagya yha tk")
-                login(request,user)
-                print(username)
-                messages.success(request, "successful login!")
-                #model = UserDetails.username
-                #return render(request,'profile.html',{'model':model})
-                return redirect(profile,username)
+            if User.objects.filter(username = request.POST['username']).exists():
+            
+                user = User.objects.get(username=username)
+                password = request.POST['password']
+                user.backend = 'django.contrib.auth.backends.ModelBackend'
+                user = authenticate(username=username, password=password)
+                if user.is_active:
+                    messages.success(request, "successful login!")
+                    print("aagya yha tk")
+                    login(request,user)
+                    print(username)
+                    messages.success(request, "successful login!")
+                    #model = UserDetails.username
+                    #return render(request,'profile.html',{'model':model})
+                    return redirect(profile,username)
 
+                else:
+                    messages.success(request, "invalid login Details")
+                    return redirect('/login')
             else:
-                messages.success(request, "invalid login Details")
-                return redirect('/login')
+                return render(request,template,{'form':form,'error_message':'Username Not exists'})
     else:
             messages.success(request, "No user Found")
     return render(request,template,{'form':form})
