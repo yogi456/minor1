@@ -35,5 +35,5 @@ Step6: python3 manage.py makemigrations
 Step7: python3 manage.py runserver
 
 and Boom!!!
-Project is up and running
+Project is up and running and you can see by visiting www.bookgiveaway.online
  
